@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q'LOCURA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img class="Imagen" src="LOGO.png" alt="">
+    <h1>Crea tu cuenta</h1>
+    <div class="form-container">
+        <form action="submit_form.php" method="post">
+            <label for="email"></label><br>
+            <input type="email" id="email" name="email" placeholder="Correo" required><br><br>
+            
+            <label for="password"></label><br>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required><br><br>
+            
+            <label for="first-name"></label><br>
+            <input type="text" id="first-name" name="first-name" placeholder="Nombre" required><br><br>
+            
+            <label for="last-name"></label><br>
+            <input type="text" id="last-name" name="last-name" placeholder="Apellido" required><br><br>
+            
+            <label for="phone"></label><br>
+            <input type="tel" id="phone" name="phone" placeholder="+57" pattern="[0-9]{10}" required><br><br>
+            
+            <button href="">Continuar</button>
+        </form>
+    </div>     
+    <a href="Practica.html"><button class="button">Atras</button></a>
+  
+</body>
+</html>
