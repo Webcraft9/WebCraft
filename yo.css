@@ -1,0 +1,103 @@
+/* style.css */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #f60;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.profile-container {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info, .orders, .pending-orders {
+    margin-bottom: 20px;
+}
+
+.profile-info h2, .orders h2, .pending-orders h2 {
+    border-bottom: 2px solid #f60;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    height: 32px;
+    align-items: center;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #f60;
+    color: white;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #c00;
+}
+
+.hidden {
+    display: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+footer {
+    background-color: #f60;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+img{
+    position: relative;
+    top: -520px;
+    width:100px;
+    left: 15px;
+}

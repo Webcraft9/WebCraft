@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Usuario</title>
+    <link rel="stylesheet" href="yo.css">
+</head>
+<body>
+    <header>
+        <h1>Perfil de Usuario</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="yo.html">Mi Cuenta</a>
+            <a href="cerrar secion.html">Cerrar sesión</a>
+        </nav>
+    </header>
+
+    <div class="profile-container">
+        <section class="profile-info">
+            <h2>Información de la Cuenta</h2>
+            <p><strong>Nombre:</strong> Juan Pérez</p>
+            <p><strong>Correo:</strong> juan.perez@example.com</p>
+            <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+            <a href="edicioninformacion.html">
+                <button id="edit-info-btn">Editar Información</button>
+            </a>
+        </section>
+
+        <section class="orders">
+            <h2>Pedidos Realizados</h2>
+            <button id="toggle-orders">Mostrar Pedidos</button>
+            <div id="orders-table" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID del Pedido</th>
+                            <th>Fecha</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>2024-08-01</td>
+                            <td>En Proceso</td>
+                            <td>$50.00</td>
+                        </tr>
+                        <tr>
+                            <td>002</td>
+                            <td>2024-07-15</td>
+                            <td>Entregado</td>
+                            <td>$30.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pending-orders">
+            <h2>Pedidos Pendientes de Entrega</h2>
+            <button id="toggle-pending">Mostrar Pedidos Pendientes</button>
+            <div id="pending-orders-table" class="hidden">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID del Pedido</th>
+                            <th>Fecha</th>
+                            <th>Estimación de Entrega</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>003</td>
+                            <td>2024-08-05</td>
+                            <td>2024-08-10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Q'LOCURA</p>
+    </footer>
+    <script src="yo.js"></script>
+    <img src="LOGO.png" alt="">
+
+</body>
+</html>

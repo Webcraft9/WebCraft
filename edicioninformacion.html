@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Información</title>
+    <link rel="stylesheet" href="edicioninformacion.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Editar Información</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="yo.html">Mi Cuenta</a>
+            <a href="logout.html">Cerrar sesión</a>
+        </nav>
+    </header>
+    <img src="LOGO.png" alt=""> 
+   
+
+    <div class="edit-container">  
+        
+        <form id="edit-form">
+            <section class="profile-info">
+                <h2>Actualizar Información</h2>
+
+                <label for="edit-name">Nombre:</label><br>
+                <input type="text" id="edit-name" name="name" placeholder="Nombre" required><br><br>
+
+                <label for="edit-email">Correo:</label><br>
+                <input type="email" id="edit-email" name="email" placeholder="Correo" required><br><br>
+
+                <label for="edit-phone">Teléfono:</label><br>
+                <input type="tel" id="edit-phone" name="phone" placeholder="+57" pattern="[0-9]{10}" required><br><br>
+
+                <button type="submit">Guardar Cambios</button>
+            </section>
+         
+        </form>
+        <a href="yo.html">
+            <button id="back-btn">Regresar a Mi Cuenta</button>
+        </a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Q'LOCURA</p>
+    </footer>
+    <script src="edicioninformacion.js"></script>
+    
+
+
+</body>
+</html>
