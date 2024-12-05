@@ -1,0 +1,39 @@
+{
+  "name": "mi-proyecto",
+  "version": "1.0.0",
+  "description": "Este es un proyecto de ejemplo en Node.js",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js", 
+    "start": "node server.js",  
+    "test": "echo \"Error: no test specified\" && exit 1",  
+    "build": "echo \"No build script defined\"",  
+    "lint": "eslint .",  
+    "prestart": "echo 'Iniciando servidor...'"  
+  },
+  "keywords": [
+    "node",
+    "express", 
+    "javascript"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",  
+    "dotenv": "^10.0.0",   
+    "mongoose": "^5.10.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",  
+    "eslint": "^7.32.0"   
+  },
+  "engines": {
+    "node": ">=14.0.0",  
+    "npm": ">=6.0.0"      
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ]
+}
