@@ -1,2 +1,0 @@
-# WebCraft
-Proyecto Sena
