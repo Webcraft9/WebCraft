@@ -1,0 +1,810 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Documentación de la API de QLOCURA",
+    "description": "API para gestionar usuarios, productos, pedidos y reportes de pedidos.",
+    "contact": {
+      "name": "Documentación de api Webcraft",
+      "email": "contacto@ejemplo.com"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/api",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/signin": {
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Registrar un nuevo usuario",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "contrasena": {
+                  "type": "string"
+                },
+                "rol": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nombre",
+                "email",
+                "contrasena",
+                "rol"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Usuario creado exitosamente"
+          },
+          "400": {
+            "description": "Campos requeridos faltantes o inválidos"
+          },
+          "409": {
+            "description": "Nombre o email ya registrado"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Iniciar sesión",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "contrasena": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email",
+                "contrasena"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Inicio de sesión exitoso con token"
+          },
+          "400": {
+            "description": "Faltan credenciales"
+          },
+          "401": {
+            "description": "Credenciales inválidas"
+          }
+        }
+      }
+    },
+    "/usuarios": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Obtener todos los usuarios",
+        "responses": {
+          "200": {
+            "description": "Lista de usuarios"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Crear un nuevo usuario",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "contrasena": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "nombre",
+                "email",
+                "contrasena"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Usuario creado"
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Actualizar un usuario",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "contrasena": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario actualizado"
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "summary": "Eliminar un usuario",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuario eliminado"
+          },
+          "404": {
+            "description": "Usuario no encontrado"
+          }
+        }
+      }
+    },
+    "/productos": {
+      "get": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Obtener todos los productos",
+        "responses": {
+          "200": {
+            "description": "Lista de productos"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Crear producto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nombre": {
+                  "type": "string"
+                },
+                "descripcion": {
+                  "type": "string"
+                },
+                "precio": {
+                  "type": "number"
+                },
+                "stock": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "nombre",
+                "precio",
+                "stock"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Producto creado"
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Actualizar producto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "nombre": {
+                  "type": "string"
+                },
+                "descripcion": {
+                  "type": "string"
+                },
+                "precio": {
+                  "type": "number"
+                },
+                "stock": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto actualizado"
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Productos"
+        ],
+        "summary": "Eliminar producto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Producto eliminado"
+          },
+          "404": {
+            "description": "Producto no encontrado"
+          }
+        }
+      }
+    },
+    "/pedidos": {
+      "get": {
+        "tags": [
+          "Pedidos"
+        ],
+        "summary": "Obtener todos los pedidos",
+        "responses": {
+          "200": {
+            "description": "Lista de pedidos"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Pedidos"
+        ],
+        "summary": "Crear pedido",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "usuario_id": {
+                  "type": "integer"
+                },
+                "producto_id": {
+                  "type": "integer"
+                },
+                "cantidad": {
+                  "type": "integer"
+                },
+                "metodo_pago": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "usuario_id",
+                "producto_id",
+                "cantidad",
+                "metodo_pago"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Pedido creado"
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pedidos"
+        ],
+        "summary": "Actualizar pedido",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "cantidad": {
+                  "type": "integer"
+                },
+                "metodo_pago": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pedido actualizado"
+          },
+          "404": {
+            "description": "Pedido no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Pedidos"
+        ],
+        "summary": "Eliminar pedido",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pedido eliminado"
+          },
+          "404": {
+            "description": "Pedido no encontrado"
+          }
+        }
+      }
+    },
+    "/reportes": {
+      "get": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Obtener todos los reportes de pedidos",
+        "responses": {
+          "200": {
+            "description": "Lista de reportes"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Crear reporte",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "pedido_id": {
+                  "type": "integer"
+                },
+                "descripcion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "pedido_id",
+                "descripcion"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Reporte creado"
+          },
+          "400": {
+            "description": "Datos inválidos"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Actualizar reporte",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "descripcion": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reporte actualizado"
+          },
+          "404": {
+            "description": "Reporte no encontrado"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reportes"
+        ],
+        "summary": "Eliminar reporte",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reporte eliminado"
+          },
+          "404": {
+            "description": "Reporte no encontrado"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UsuarioRegistro": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "contrasena": {
+          "type": "string"
+        },
+        "rol": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "email",
+        "contrasena",
+        "rol"
+      ]
+    },
+    "UsuarioLogin": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "contrasena": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "contrasena"
+      ]
+    },
+    "UsuarioNuevo": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "contrasena": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "nombre",
+        "email",
+        "contrasena"
+      ]
+    },
+    "UsuarioActualizar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "contrasena": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ProductoNuevo": {
+      "type": "object",
+      "properties": {
+        "nombre": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "precio": {
+          "type": "number"
+        },
+        "stock": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "nombre",
+        "precio",
+        "stock"
+      ]
+    },
+    "ProductoActualizar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "nombre": {
+          "type": "string"
+        },
+        "descripcion": {
+          "type": "string"
+        },
+        "precio": {
+          "type": "number"
+        },
+        "stock": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "PedidoNuevo": {
+      "type": "object",
+      "properties": {
+        "usuario_id": {
+          "type": "integer"
+        },
+        "producto_id": {
+          "type": "integer"
+        },
+        "cantidad": {
+          "type": "integer"
+        },
+        "metodo_pago": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "usuario_id",
+        "producto_id",
+        "cantidad",
+        "metodo_pago"
+      ]
+    },
+    "PedidoActualizar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "cantidad": {
+          "type": "integer"
+        },
+        "metodo_pago": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "ReporteNuevo": {
+      "type": "object",
+      "properties": {
+        "pedido_id": {
+          "type": "integer"
+        },
+        "descripcion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pedido_id",
+        "descripcion"
+      ]
+    },
+    "ReporteActualizar": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "descripcion": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "EliminarPorId": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+}
